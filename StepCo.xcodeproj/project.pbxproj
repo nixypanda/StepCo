@@ -1,0 +1,705 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		014531CDE1B630FF62AE3E87 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
+		03F4D5C1E842F1D8B82212A5 /* StepCoWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A21D027F2DA27B4E235D2 /* StepCoWatchWidget.swift */; };
+		04B1CB4403373DB2DC2C5C41 /* HealthKitStepStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */; };
+		0CAE3D00B0DFE623F47F498E /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
+		12AF8DAF8EDC98CBC62D3D54 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
+		3FF4CE37D1B43B4A5EDA7F0F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA258630AD50CAEFE77CC028 /* ContentView.swift */; };
+		4A0BBDF8B766750A8E399355 /* StepColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */; };
+		4B05BE46451B20326C17FF00 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F6BD1B26C7808B74CE7A2A /* CalendarView.swift */; };
+		4F736ACBBAE843AD0F0F534C /* StepColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */; };
+		74A4B75047905CE73E41A555 /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
+		7AFD541B6EB6A847EADE38B6 /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
+		883FAF766C4262293DB21638 /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
+		8A70F97CE78D0C26BA6F6C75 /* StepCoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2E884A714AB8A8C5800E5 /* StepCoApp.swift */; };
+		9005C44E89DF16CE9BBEE547 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73360CF04CAEF201DC9247 /* DashboardView.swift */; };
+		92E73A8493F86A512EB18F2D /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
+		965FB4496E6DF8702A6FAF0A /* WatchDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB7C13438FE95D0BE5740F9 /* WatchDashboardView.swift */; };
+		9A184183E8A1C93F6F7B2B05 /* HealthKitStepStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */; };
+		9CE97E614FD3215DE4DDDC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */; };
+		A17CEE3869C992E0E42E182F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E7943682EB1B2928AADDF0 /* SettingsView.swift */; };
+		A3D69ECB8F2FF3E49F3A5194 /* StepColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */; };
+		A8CFB66070B158F9D36D2B6F /* StepRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5B7C9AF0F0B39C19E58EC /* StepRepository.swift */; };
+		AEDFCE33709D2B36DD831B52 /* StepRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B5B7C9AF0F0B39C19E58EC /* StepRepository.swift */; };
+		B701EB9E053D3C5098F4EA24 /* StepColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */; };
+		B9EB3169F6C24DA28C4F5DEF /* StepSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */; };
+		BFA97B08298AC173AB0EFDB0 /* StepCoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE0997F463E188F808D84D /* StepCoWatchApp.swift */; };
+		DE0E1BEB44B4289E2A3DFBF0 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
+		E5B87EAFE45378E865093586 /* StepCoWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 53E2C907A59A82331ED61E75 /* StepCoWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F03D19C865BEF342DB0251E4 /* StepSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */; };
+		F905CF1AB643C483515A4C2F /* StepCoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4FC52E406710AC3E8DEE2F /* StepCoWidget.swift */; };
+		FB7EBE0CB65B4D0BB3DB3E3D /* StepCoWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A19E7867DD0849A5D5029F71 /* StepCoWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		580B67996E8E384733F3704E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52FCE53707EB4366BAEFB31A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36E89647C66154473140AF4C;
+			remoteInfo = StepCoWidget;
+		};
+		83E94B6D5D3168CCE9C328B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52FCE53707EB4366BAEFB31A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E0CC0BCBC0A5DA379E1FD8E;
+			remoteInfo = StepCoWatchWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9E149DB4B770CA8826E84DCA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FB7EBE0CB65B4D0BB3DB3E3D /* StepCoWatchWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9B935AABBBD45FE413CCA57 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E5B87EAFE45378E865093586 /* StepCoWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		07BE0997F463E188F808D84D /* StepCoWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWatchApp.swift; sourceTree = "<group>"; };
+		0C093A49D0AF62B27C3C631A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		13F6BD1B26C7808B74CE7A2A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		16C9236006B43229175743C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2E3325B1BAA814456AD426B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		41B5B7C9AF0F0B39C19E58EC /* StepRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRepository.swift; sourceTree = "<group>"; };
+		42E215D85D7506565A40435D /* StepCoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepCoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSettingsStore.swift; sourceTree = "<group>"; };
+		53E2C907A59A82331ED61E75 /* StepCoWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = StepCoWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BC895235FB93D61A5AB1DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6C4FC52E406710AC3E8DEE2F /* StepCoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWidget.swift; sourceTree = "<group>"; };
+		966A21D027F2DA27B4E235D2 /* StepCoWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWatchWidget.swift; sourceTree = "<group>"; };
+		966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitStepStore.swift; sourceTree = "<group>"; };
+		9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepColorStyle.swift; sourceTree = "<group>"; };
+		A19E7867DD0849A5D5029F71 /* StepCoWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StepCoWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA258630AD50CAEFE77CC028 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B03350C07FA575C7A4EC34AF /* StepCoWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWatchWidget.entitlements; sourceTree = "<group>"; };
+		B4AEDE479715EBFC820EE48E /* StepCoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWidget.entitlements; sourceTree = "<group>"; };
+		BBB2E884A714AB8A8C5800E5 /* StepCoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoApp.swift; sourceTree = "<group>"; };
+		BFDC658576A9F1C39730B4F8 /* StepCo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = StepCo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDB7C13438FE95D0BE5740F9 /* WatchDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDashboardView.swift; sourceTree = "<group>"; };
+		CEE606FD9D6C311508C7D5C9 /* StepModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModels.swift; sourceTree = "<group>"; };
+		D5386535CE668815DA9A48AA /* StepCoWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWatch.entitlements; sourceTree = "<group>"; };
+		E0E7943682EB1B2928AADDF0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ED73360CF04CAEF201DC9247 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		F421D6130C857C1CF30F9B4E /* StepCo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCo.entitlements; sourceTree = "<group>"; };
+		F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSnapshotCache.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		02B5720307EBA9FA7E766826 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */,
+				9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */,
+				CEE606FD9D6C311508C7D5C9 /* StepModels.swift */,
+				41B5B7C9AF0F0B39C19E58EC /* StepRepository.swift */,
+				4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */,
+				F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */,
+			);
+			name = Shared;
+			path = StepCo/Shared;
+			sourceTree = "<group>";
+		};
+		47DC01DBF28D42C15C68E9C1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */,
+				13F6BD1B26C7808B74CE7A2A /* CalendarView.swift */,
+				AA258630AD50CAEFE77CC028 /* ContentView.swift */,
+				ED73360CF04CAEF201DC9247 /* DashboardView.swift */,
+				0C093A49D0AF62B27C3C631A /* Info.plist */,
+				E0E7943682EB1B2928AADDF0 /* SettingsView.swift */,
+				F421D6130C857C1CF30F9B4E /* StepCo.entitlements */,
+				BBB2E884A714AB8A8C5800E5 /* StepCoApp.swift */,
+			);
+			name = App;
+			path = StepCo/App;
+			sourceTree = "<group>";
+		};
+		48246D103CF66A92CE877B99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFDC658576A9F1C39730B4F8 /* StepCo.app */,
+				42E215D85D7506565A40435D /* StepCoWatch.app */,
+				A19E7867DD0849A5D5029F71 /* StepCoWatchWidget.appex */,
+				53E2C907A59A82331ED61E75 /* StepCoWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		591E0D8B8057FB723FCE7FF0 = {
+			isa = PBXGroup;
+			children = (
+				47DC01DBF28D42C15C68E9C1 /* App */,
+				02B5720307EBA9FA7E766826 /* Shared */,
+				EDEAD3E6488060F2CC91BE2A /* StepCoWatchWidget */,
+				62832DC585B22716F3666DE6 /* StepCoWidget */,
+				88CBAA2859FCE89D2CBA6CD7 /* WatchApp */,
+				48246D103CF66A92CE877B99 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		62832DC585B22716F3666DE6 /* StepCoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				16C9236006B43229175743C3 /* Info.plist */,
+				B4AEDE479715EBFC820EE48E /* StepCoWidget.entitlements */,
+				6C4FC52E406710AC3E8DEE2F /* StepCoWidget.swift */,
+			);
+			path = StepCoWidget;
+			sourceTree = "<group>";
+		};
+		88CBAA2859FCE89D2CBA6CD7 /* WatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				5BC895235FB93D61A5AB1DF4 /* Info.plist */,
+				D5386535CE668815DA9A48AA /* StepCoWatch.entitlements */,
+				07BE0997F463E188F808D84D /* StepCoWatchApp.swift */,
+				CDB7C13438FE95D0BE5740F9 /* WatchDashboardView.swift */,
+			);
+			name = WatchApp;
+			path = StepCo/WatchApp;
+			sourceTree = "<group>";
+		};
+		EDEAD3E6488060F2CC91BE2A /* StepCoWatchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2E3325B1BAA814456AD426B3 /* Info.plist */,
+				B03350C07FA575C7A4EC34AF /* StepCoWatchWidget.entitlements */,
+				966A21D027F2DA27B4E235D2 /* StepCoWatchWidget.swift */,
+			);
+			path = StepCoWatchWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		36E89647C66154473140AF4C /* StepCoWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF3990D3CAF9DC8494EFBE84 /* Build configuration list for PBXNativeTarget "StepCoWidget" */;
+			buildPhases = (
+				BED8657888D283B8613DF2DD /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StepCoWidget;
+			packageProductDependencies = (
+			);
+			productName = StepCoWidget;
+			productReference = 53E2C907A59A82331ED61E75 /* StepCoWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		6BC807C28E565737DB6E2EFC /* StepCoWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8733C829AFF435396E08B796 /* Build configuration list for PBXNativeTarget "StepCoWatch" */;
+			buildPhases = (
+				D3070B42AEDF4C5DCFDC6141 /* Sources */,
+				9E149DB4B770CA8826E84DCA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A1494380CA6F8DBB39437E6 /* PBXTargetDependency */,
+			);
+			name = StepCoWatch;
+			packageProductDependencies = (
+			);
+			productName = StepCoWatch;
+			productReference = 42E215D85D7506565A40435D /* StepCoWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9E0CC0BCBC0A5DA379E1FD8E /* StepCoWatchWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4DDCC66DDB8E14CAF291FF9 /* Build configuration list for PBXNativeTarget "StepCoWatchWidget" */;
+			buildPhases = (
+				B70A9C87CF4469826F6D0AA1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StepCoWatchWidget;
+			packageProductDependencies = (
+			);
+			productName = StepCoWatchWidget;
+			productReference = A19E7867DD0849A5D5029F71 /* StepCoWatchWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B255970373A0016887FB2D39 /* StepCo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B0446EFCD598A50F7B74DD6 /* Build configuration list for PBXNativeTarget "StepCo" */;
+			buildPhases = (
+				9F8D00DB57F135C146547C13 /* Sources */,
+				30959DF89C9D2BDDF8905F1D /* Resources */,
+				D9B935AABBBD45FE413CCA57 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2871BD3E670FD48CB6BB081D /* PBXTargetDependency */,
+			);
+			name = StepCo;
+			packageProductDependencies = (
+			);
+			productName = StepCo;
+			productReference = BFDC658576A9F1C39730B4F8 /* StepCo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52FCE53707EB4366BAEFB31A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					36E89647C66154473140AF4C = {
+						DevelopmentTeam = "";
+					};
+					6BC807C28E565737DB6E2EFC = {
+						DevelopmentTeam = "";
+					};
+					9E0CC0BCBC0A5DA379E1FD8E = {
+						DevelopmentTeam = "";
+					};
+					B255970373A0016887FB2D39 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 95675C85BA56C70BAB711D9F /* Build configuration list for PBXProject "StepCo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 591E0D8B8057FB723FCE7FF0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B255970373A0016887FB2D39 /* StepCo */,
+				6BC807C28E565737DB6E2EFC /* StepCoWatch */,
+				9E0CC0BCBC0A5DA379E1FD8E /* StepCoWatchWidget */,
+				36E89647C66154473140AF4C /* StepCoWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		30959DF89C9D2BDDF8905F1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CE97E614FD3215DE4DDDC87 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9F8D00DB57F135C146547C13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B05BE46451B20326C17FF00 /* CalendarView.swift in Sources */,
+				3FF4CE37D1B43B4A5EDA7F0F /* ContentView.swift in Sources */,
+				9005C44E89DF16CE9BBEE547 /* DashboardView.swift in Sources */,
+				9A184183E8A1C93F6F7B2B05 /* HealthKitStepStore.swift in Sources */,
+				A17CEE3869C992E0E42E182F /* SettingsView.swift in Sources */,
+				8A70F97CE78D0C26BA6F6C75 /* StepCoApp.swift in Sources */,
+				A3D69ECB8F2FF3E49F3A5194 /* StepColorStyle.swift in Sources */,
+				12AF8DAF8EDC98CBC62D3D54 /* StepModels.swift in Sources */,
+				A8CFB66070B158F9D36D2B6F /* StepRepository.swift in Sources */,
+				F03D19C865BEF342DB0251E4 /* StepSettingsStore.swift in Sources */,
+				7AFD541B6EB6A847EADE38B6 /* StepSnapshotCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B70A9C87CF4469826F6D0AA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03F4D5C1E842F1D8B82212A5 /* StepCoWatchWidget.swift in Sources */,
+				4F736ACBBAE843AD0F0F534C /* StepColorStyle.swift in Sources */,
+				DE0E1BEB44B4289E2A3DFBF0 /* StepModels.swift in Sources */,
+				883FAF766C4262293DB21638 /* StepSnapshotCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BED8657888D283B8613DF2DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F905CF1AB643C483515A4C2F /* StepCoWidget.swift in Sources */,
+				4A0BBDF8B766750A8E399355 /* StepColorStyle.swift in Sources */,
+				92E73A8493F86A512EB18F2D /* StepModels.swift in Sources */,
+				74A4B75047905CE73E41A555 /* StepSnapshotCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3070B42AEDF4C5DCFDC6141 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04B1CB4403373DB2DC2C5C41 /* HealthKitStepStore.swift in Sources */,
+				BFA97B08298AC173AB0EFDB0 /* StepCoWatchApp.swift in Sources */,
+				B701EB9E053D3C5098F4EA24 /* StepColorStyle.swift in Sources */,
+				014531CDE1B630FF62AE3E87 /* StepModels.swift in Sources */,
+				AEDFCE33709D2B36DD831B52 /* StepRepository.swift in Sources */,
+				B9EB3169F6C24DA28C4F5DEF /* StepSettingsStore.swift in Sources */,
+				0CAE3D00B0DFE623F47F498E /* StepSnapshotCache.swift in Sources */,
+				965FB4496E6DF8702A6FAF0A /* WatchDashboardView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2871BD3E670FD48CB6BB081D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36E89647C66154473140AF4C /* StepCoWidget */;
+			targetProxy = 580B67996E8E384733F3704E /* PBXContainerItemProxy */;
+		};
+		8A1494380CA6F8DBB39437E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E0CC0BCBC0A5DA379E1FD8E /* StepCoWatchWidget */;
+			targetProxy = 83E94B6D5D3168CCE9C328B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		58A59AA50B4D04CB98AD99F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StepCoWidget/StepCoWidget.entitlements;
+				INFOPLIST_FILE = StepCoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		63BB99A2F1F2414238B3F287 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StepCo/WatchApp/StepCoWatch.entitlements;
+				INFOPLIST_FILE = StepCo/WatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		674FF567C13EE0604D1070F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		6F731B1EFF8259B5F0C91AD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StepCo/WatchApp/StepCoWatch.entitlements;
+				INFOPLIST_FILE = StepCo/WatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		85F3D8330A369A0891D800DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StepCoWatchWidget/StepCoWatchWidget.entitlements;
+				INFOPLIST_FILE = StepCoWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.watchkitapp.widget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		9A24D8BE35FD3EA313801E5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		B33A6A2F5BFE71E9B1D01855 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StepCo/App/StepCo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = StepCo/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B897C5C3109A58E4314BEF9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StepCoWidget/StepCoWidget.entitlements;
+				INFOPLIST_FILE = StepCoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D8EBA7EED50FA93E5C79C1AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StepCo/App/StepCo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = StepCo/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E56BB781E16886BFFE157F9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StepCoWatchWidget/StepCoWatchWidget.entitlements;
+				INFOPLIST_FILE = StepCoWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.watchkitapp.widget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B0446EFCD598A50F7B74DD6 /* Build configuration list for PBXNativeTarget "StepCo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B33A6A2F5BFE71E9B1D01855 /* Debug */,
+				D8EBA7EED50FA93E5C79C1AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8733C829AFF435396E08B796 /* Build configuration list for PBXNativeTarget "StepCoWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F731B1EFF8259B5F0C91AD8 /* Debug */,
+				63BB99A2F1F2414238B3F287 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		95675C85BA56C70BAB711D9F /* Build configuration list for PBXProject "StepCo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				674FF567C13EE0604D1070F6 /* Debug */,
+				9A24D8BE35FD3EA313801E5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D4DDCC66DDB8E14CAF291FF9 /* Build configuration list for PBXNativeTarget "StepCoWatchWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E56BB781E16886BFFE157F9E /* Debug */,
+				85F3D8330A369A0891D800DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EF3990D3CAF9DC8494EFBE84 /* Build configuration list for PBXNativeTarget "StepCoWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B897C5C3109A58E4314BEF9E /* Debug */,
+				58A59AA50B4D04CB98AD99F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52FCE53707EB4366BAEFB31A /* Project object */;
+}

@@ -1,0 +1,105 @@
+name: StepCo
+options:
+  bundleIdPrefix: com.nixypanda
+  deploymentTarget:
+    iOS: "17.0"
+    watchOS: "10.0"
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+    DEVELOPMENT_TEAM: ""
+targets:
+  StepCo:
+    type: application
+    platform: iOS
+    sources:
+      - StepCo/App
+      - StepCo/Shared
+    resources:
+      - StepCo/App/Assets.xcassets
+    info:
+      path: StepCo/App/Info.plist
+      properties:
+        CFBundleDisplayName: StepCo
+        NSHealthShareUsageDescription: StepCo reads step count and walking distance to show your daily steps.
+    entitlements:
+      path: StepCo/App/StepCo.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - target: StepCoWidget
+  StepCoWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - StepCoWidget
+      - StepCo/Shared/StepModels.swift
+      - StepCo/Shared/StepColorStyle.swift
+      - StepCo/Shared/StepSnapshotCache.swift
+    info:
+      path: StepCoWidget/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: StepCoWidget/StepCoWidget.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo.widget
+        SKIP_INSTALL: YES
+  StepCoWatch:
+    type: application
+    platform: watchOS
+    sources:
+      - StepCo/WatchApp
+      - StepCo/Shared
+    info:
+      path: StepCo/WatchApp/Info.plist
+      properties:
+        CFBundleDisplayName: StepCo
+        NSHealthShareUsageDescription: StepCo reads step count and walking distance to show your daily steps.
+        WKApplication: true
+        WKCompanionAppBundleIdentifier: com.nixypanda.StepCo
+    entitlements:
+      path: StepCo/WatchApp/StepCoWatch.entitlements
+    dependencies:
+      - target: StepCoWatchWidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo.watchkitapp
+  StepCoWatchWidget:
+    type: app-extension
+    platform: watchOS
+    sources:
+      - StepCoWatchWidget
+      - StepCo/Shared/StepModels.swift
+      - StepCo/Shared/StepColorStyle.swift
+      - StepCo/Shared/StepSnapshotCache.swift
+    info:
+      path: StepCoWatchWidget/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: StepCoWatchWidget/StepCoWatchWidget.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo.watchkitapp.widget
+        SKIP_INSTALL: YES
+schemes:
+  StepCo:
+    build:
+      targets:
+        StepCo: all
+        StepCoWidget: all
+    run:
+      config: Debug
+  StepCoWatch:
+    build:
+      targets:
+        StepCoWatch: all
+        StepCoWatchWidget: all
+    run:
+      config: Debug
