@@ -84,8 +84,7 @@ final class HealthKitStepStore {
                 date: date,
                 steps: Int(stepValues[calendar.startOfDay(for: date)] ?? 0),
                 distanceKilometers: meters / 1_000,
-                goal: snapshot.targetSteps,
-                leewayDays: snapshot.leewayDays
+                goal: snapshot.targetSteps
             )
         }
     }

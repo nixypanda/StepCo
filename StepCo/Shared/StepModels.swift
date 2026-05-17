@@ -25,7 +25,6 @@ struct DayStepSummary: Identifiable, Codable, Equatable {
     let steps: Int
     let distanceKilometers: Double
     let goal: Int
-    let leewayDays: Int
 
     var progress: Double {
         guard goal > 0 else { return 0 }
@@ -58,7 +57,6 @@ struct DayStepSummary: Identifiable, Codable, Equatable {
 struct StepSettingsSnapshot: Codable, Equatable {
     let effectiveDate: Date
     let targetSteps: Int
-    let leewayDays: Int
 }
 
 struct CachedStepSnapshot: Codable, Equatable {

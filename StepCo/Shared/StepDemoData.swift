@@ -15,8 +15,7 @@ enum StepDemoData {
                 date: date,
                 steps: steps,
                 distanceKilometers: distanceKilometers(for: steps),
-                goal: snapshot.targetSteps,
-                leewayDays: snapshot.leewayDays
+                goal: snapshot.targetSteps
             )
         }
     }
@@ -26,8 +25,7 @@ enum StepDemoData {
             date: Date(),
             steps: 3_750,
             distanceKilometers: distanceKilometers(for: 3_750),
-            goal: 7_500,
-            leewayDays: 0
+            goal: 7_500
         )
         return CachedStepSnapshot(updatedAt: Date(), today: today, currentStreak: 0)
     }

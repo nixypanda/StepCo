@@ -23,8 +23,7 @@ final class StepSettingsStore: ObservableObject {
             history = [
                 StepSettingsSnapshot(
                     effectiveDate: calendar.startOfDay(for: Date()),
-                    targetSteps: 7_500,
-                    leewayDays: 0
+                    targetSteps: 7_500
                 )
             ]
         }
@@ -38,21 +37,16 @@ final class StepSettingsStore: ObservableObject {
         current.targetSteps
     }
 
-    var leewayDays: Int {
-        current.leewayDays
-    }
-
     func settings(for date: Date) -> StepSettingsSnapshot {
         let day = calendar.startOfDay(for: date)
         return history.last { $0.effectiveDate <= day } ?? history[0]
     }
 
-    func update(targetSteps: Int? = nil, leewayDays: Int? = nil) {
+    func update(targetSteps: Int? = nil) {
         let today = calendar.startOfDay(for: Date())
         let next = StepSettingsSnapshot(
             effectiveDate: today,
-            targetSteps: max(1, targetSteps ?? current.targetSteps),
-            leewayDays: max(0, leewayDays ?? current.leewayDays)
+            targetSteps: max(1, targetSteps ?? current.targetSteps)
         )
 
         history.removeAll { calendar.isDate($0.effectiveDate, inSameDayAs: today) }

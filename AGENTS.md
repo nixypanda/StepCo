@@ -11,11 +11,19 @@ This repo uses XcodeGen as the source of truth for the Xcode project.
 Targets:
 
 - `StepCo`: iOS app
+- `StepCoTests`: iOS XCTest unit-test bundle
 - `StepCoWidget`: iOS WidgetKit extension
 - `StepCoWatch`: watchOS app
 - `StepCoWatchWidget`: watchOS WidgetKit complication/widget
 
-Shared app/watch/widget model code lives in `StepCo/Shared`.
+Source layout:
+
+- `StepCo/App`: iOS SwiftUI app views and app entry point
+- `StepCo/WatchApp`: watchOS SwiftUI app views and app entry point
+- `StepCo/Shared`: shared app/watch/widget model, HealthKit, pedometer, settings, tint, and cache code
+- `StepCoWidget`: iOS WidgetKit widget
+- `StepCoWatchWidget`: watchOS WidgetKit widget/complication
+- `StepCoTests`: XCTest coverage for shared behavior
 
 ## Commands
 
@@ -25,27 +33,30 @@ Use `just` through Nix in this repo:
 nix run nixpkgs#just -- --list
 nix run nixpkgs#just -- generate
 nix run nixpkgs#just -- test
+nix run nixpkgs#just -- test-unit
 nix run nixpkgs#just -- build
 nix run nixpkgs#just -- run-sim
 nix run nixpkgs#just -- run-sim-watch
+nix run nixpkgs#just -- run-sim-paired
 ```
 
-Verified working as of the last handoff:
+Recipes defined in the current `justfile`:
 
 - `default`
 - `generate`
 - `test`
-- `test-iphone`
-- `test-watch`
+- `test-unit`
 - `build`
 - `build-iphone`
 - `build-watch`
 - `run-sim`
 - `run-sim-iphone`
 - `run-sim-watch`
+- `run-sim-paired`
 
 `run-sim-watch` expects a simulator named `Apple Watch Series 10 (46mm)`.
 `run-sim-iphone` expects a simulator named `iPhone 16`.
+`run-sim-paired` pairs/boots both named simulators and installs both the iOS app and watch app.
 
 ## Build Notes
 
@@ -58,6 +69,8 @@ xcodebuild build -project StepCo.xcodeproj -target StepCoWatch -sdk watchsimulat
 ```
 
 This avoids flaky destination resolution for watchOS simulator builds. Keep `run-sim-watch` aligned with `.build/XcodeProducts/Debug-watchsimulator/StepCoWatch.app`.
+
+`run-sim-paired` installs the watch app from `.build/DerivedData/Build/Products/Debug-watchsimulator/StepCoWatch.app`, so keep that recipe aligned with the iOS scheme build output.
 
 ## Important Plist/Manifest Details
 
@@ -91,17 +104,24 @@ HealthKit is used for:
 - `stepCount`
 - `distanceWalkingRunning`
 
-Settings are historical. Changing target steps or leeway applies from today forward; past days use the settings snapshot active on that day.
+Core Motion live pedometer updates are used while the app is open to update today's step and distance totals on top of the HealthKit baseline.
+
+On simulator, `StepRepository` uses `StepDemoData` instead of HealthKit.
+
+Settings are historical. Changing target steps applies from today forward; past days use the settings snapshot active on that day.
 
 Widgets read the latest cached `CachedStepSnapshot` from app group `group.com.nixypanda.StepCo`.
+Widget reloads are throttled during live updates with a 60-second interval unless a refresh forces a reload.
 
 ## Known Caveats
 
-There are no XCTest targets yet. `just test` currently runs platform-specific `swiftc -typecheck` checks for:
+`just test` runs platform-specific `swiftc -typecheck` checks for:
 
 - iOS app
 - iOS widget
 - watch app
 - watch widget
+
+`just test-unit` runs the `StepCoTests` XCTest bundle through `xcodebuild test` on the `StepCo` scheme. Current XCTest coverage is focused on streak behavior.
 
 App group and HealthKit capabilities are declared in entitlements, but a real device/App Store build will still need the proper Apple developer team/capability setup.

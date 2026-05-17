@@ -30,7 +30,7 @@ struct StepCoWatchWidgetView: View {
     let entry: StepCoWatchWidgetEntry
 
     var body: some View {
-        let summary = entry.snapshot?.today ?? DayStepSummary(date: Date(), steps: 0, distanceKilometers: 0, goal: 7_500, leewayDays: 0)
+        let summary = entry.snapshot?.today ?? DayStepSummary(date: Date(), steps: 0, distanceKilometers: 0, goal: 7_500)
 
         Gauge(value: summary.progress) {
             Image(systemName: "figure.walk")

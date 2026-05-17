@@ -7,7 +7,7 @@ Simple step tracking for iPhone and Apple Watch.
 - iOS app with Dashboard, Calendar, and Settings.
 - HealthKit-backed step count and walking/running distance.
 - Distance is displayed in kilometers only.
-- Historical target-step and leeway settings.
+- Historical target-step settings.
 - iOS WidgetKit widget using the latest cached step snapshot.
 - watchOS app and accessory circular WidgetKit complication.
 

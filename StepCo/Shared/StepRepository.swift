@@ -40,28 +40,16 @@ final class StepRepository: ObservableObject {
             date: Date(),
             steps: 0,
             distanceKilometers: 0,
-            goal: snapshot.targetSteps,
-            leewayDays: snapshot.leewayDays
+            goal: snapshot.targetSteps
         )
     }
 
     var currentStreak: Int {
         var streak = 0
-        var leewayRemaining = today.leewayDays
 
         for day in days.sorted(by: { $0.date > $1.date }) {
-            if day.steps >= day.goal {
-                streak += 1
-                continue
-            }
-
-            if leewayRemaining > 0 {
-                leewayRemaining -= 1
-                streak += 1
-                continue
-            }
-
-            break
+            guard day.steps >= day.goal else { break }
+            streak += 1
         }
 
         return streak
@@ -144,8 +132,7 @@ final class StepRepository: ObservableObject {
             date: baseline.date,
             steps: baseline.steps + update.steps,
             distanceKilometers: baseline.distanceKilometers + update.distanceKilometers,
-            goal: baseline.goal,
-            leewayDays: baseline.leewayDays
+            goal: baseline.goal
         )
 
         replaceToday(with: updated)
