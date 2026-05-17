@@ -22,6 +22,7 @@
 		7AFD541B6EB6A847EADE38B6 /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
 		883FAF766C4262293DB21638 /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
 		8A70F97CE78D0C26BA6F6C75 /* StepCoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2E884A714AB8A8C5800E5 /* StepCoApp.swift */; };
+		8ED39CF6D7049070100801F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0FBAFD997B6EAC8D823CEED /* Assets.xcassets */; };
 		9005C44E89DF16CE9BBEE547 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73360CF04CAEF201DC9247 /* DashboardView.swift */; };
 		92E73A8493F86A512EB18F2D /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
 		9461614F33D4106917191738 /* StreakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE32449856731B90288F2E00 /* StreakTests.swift */; };
@@ -143,6 +144,7 @@
 		BFDC658576A9F1C39730B4F8 /* StepCo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = StepCo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB7C13438FE95D0BE5740F9 /* WatchDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDashboardView.swift; sourceTree = "<group>"; };
 		CEE606FD9D6C311508C7D5C9 /* StepModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModels.swift; sourceTree = "<group>"; };
+		D0FBAFD997B6EAC8D823CEED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5386535CE668815DA9A48AA /* StepCoWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWatch.entitlements; sourceTree = "<group>"; };
 		E0E7943682EB1B2928AADDF0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ED73360CF04CAEF201DC9247 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		88CBAA2859FCE89D2CBA6CD7 /* WatchApp */ = {
 			isa = PBXGroup;
 			children = (
+				D0FBAFD997B6EAC8D823CEED /* Assets.xcassets */,
 				5BC895235FB93D61A5AB1DF4 /* Info.plist */,
 				D5386535CE668815DA9A48AA /* StepCoWatch.entitlements */,
 				07BE0997F463E188F808D84D /* StepCoWatchApp.swift */,
@@ -275,6 +278,7 @@
 			buildConfigurationList = 8733C829AFF435396E08B796 /* Build configuration list for PBXNativeTarget "StepCoWatch" */;
 			buildPhases = (
 				D3070B42AEDF4C5DCFDC6141 /* Sources */,
+				79648DB35C470E59329886DF /* Resources */,
 				9E149DB4B770CA8826E84DCA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -406,6 +410,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE97E614FD3215DE4DDDC87 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79648DB35C470E59329886DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ED39CF6D7049070100801F7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
