@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>StepCo reads step count and walking distance to show your daily steps.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>StepCo uses motion data to update your step count while the app is open.</string>
 	<key>WKApplication</key>
 	<true/>
 	<key>WKCompanionAppBundleIdentifier</key>

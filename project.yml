@@ -7,7 +7,8 @@ options:
 settings:
   base:
     SWIFT_VERSION: 5.9
-    DEVELOPMENT_TEAM: ""
+    DEVELOPMENT_TEAM: CR2269QVDK
+    CODE_SIGN_STYLE: Automatic
 targets:
   StepCo:
     type: application
@@ -22,9 +23,14 @@ targets:
       properties:
         CFBundleDisplayName: StepCo
         NSHealthShareUsageDescription: StepCo reads step count and walking distance to show your daily steps.
+        NSMotionUsageDescription: StepCo uses motion data to update your step count while the app is open.
         UILaunchScreen: {}
     entitlements:
       path: StepCo/App/StepCo.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.security.application-groups:
+          - group.com.nixypanda.StepCo
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo
@@ -47,6 +53,9 @@ targets:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:
       path: StepCoWidget/StepCoWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.nixypanda.StepCo
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo.widget
@@ -62,10 +71,15 @@ targets:
       properties:
         CFBundleDisplayName: StepCo
         NSHealthShareUsageDescription: StepCo reads step count and walking distance to show your daily steps.
+        NSMotionUsageDescription: StepCo uses motion data to update your step count while the app is open.
         WKApplication: true
         WKCompanionAppBundleIdentifier: com.nixypanda.StepCo
     entitlements:
       path: StepCo/WatchApp/StepCoWatch.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.security.application-groups:
+          - group.com.nixypanda.StepCo
     dependencies:
       - target: StepCoWatchWidget
     settings:
@@ -87,6 +101,9 @@ targets:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:
       path: StepCoWatchWidget/StepCoWatchWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.nixypanda.StepCo
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo.watchkitapp.widget

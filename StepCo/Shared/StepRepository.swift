@@ -4,20 +4,28 @@ import Combine
 @MainActor
 final class StepRepository: ObservableObject {
     private let healthStore: HealthKitStepStore
+    private let liveStore: LivePedometerStore
     private let settings: StepSettingsStore
     private let calendar: Calendar
+    private let liveWidgetReloadInterval: TimeInterval = 60
 
     @Published var days: [DayStepSummary] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var lastUpdated: Date?
 
+    private var liveUpdatesEnabled = false
+    private var liveBaseline: DayStepSummary?
+    private var lastWidgetReload: Date?
+
     init(
         healthStore: HealthKitStepStore? = nil,
+        liveStore: LivePedometerStore? = nil,
         settings: StepSettingsStore,
         calendar: Calendar = .current
     ) {
         self.healthStore = healthStore ?? HealthKitStepStore()
+        self.liveStore = liveStore ?? LivePedometerStore()
         self.settings = settings
         self.calendar = calendar
     }
@@ -60,6 +68,25 @@ final class StepRepository: ObservableObject {
     }
 
     func refresh() async {
+        await refresh(restartLiveUpdates: liveUpdatesEnabled, forceWidgetReload: true)
+    }
+
+    func startRealtimeUpdates() async {
+        liveUpdatesEnabled = true
+        await refresh(restartLiveUpdates: true, forceWidgetReload: true)
+
+        guard !shouldUseDemoData else { return }
+
+        do {
+            try await healthStore.startBackgroundDelivery { [weak self] in
+                await self?.refresh(restartLiveUpdates: true, forceWidgetReload: true)
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    private func refresh(restartLiveUpdates: Bool, forceWidgetReload: Bool) async {
         isLoading = true
         errorMessage = nil
 
@@ -70,7 +97,7 @@ final class StepRepository: ObservableObject {
                 settings.settings(for: date)
             }
             lastUpdated = Date()
-            StepSnapshotCache.save(CachedStepSnapshot(updatedAt: lastUpdated ?? Date(), today: today, currentStreak: currentStreak))
+            saveSnapshot(forceWidgetReload: forceWidgetReload)
             isLoading = false
             return
         }
@@ -81,12 +108,77 @@ final class StepRepository: ObservableObject {
             let start = calendar.date(byAdding: .month, value: -12, to: end) ?? end
             days = try await healthStore.summaries(from: start, through: end, settings: settings)
             lastUpdated = Date()
-            StepSnapshotCache.save(CachedStepSnapshot(updatedAt: lastUpdated ?? Date(), today: today, currentStreak: currentStreak))
+            saveSnapshot(forceWidgetReload: forceWidgetReload)
+
+            if restartLiveUpdates {
+                startForegroundLiveUpdates()
+            }
         } catch {
             errorMessage = error.localizedDescription
         }
 
         isLoading = false
+    }
+
+    private func startForegroundLiveUpdates() {
+        liveBaseline = today
+
+        liveStore.start(from: Date()) { [weak self] update in
+            self?.applyLiveUpdate(update)
+        } onError: { [weak self] message in
+            self?.errorMessage = message
+        }
+    }
+
+    private func applyLiveUpdate(_ update: LivePedometerUpdate) {
+        guard let baseline = liveBaseline else { return }
+
+        if !calendar.isDateInToday(baseline.date) {
+            Task {
+                await refresh(restartLiveUpdates: true, forceWidgetReload: true)
+            }
+            return
+        }
+
+        let updated = DayStepSummary(
+            date: baseline.date,
+            steps: baseline.steps + update.steps,
+            distanceKilometers: baseline.distanceKilometers + update.distanceKilometers,
+            goal: baseline.goal,
+            leewayDays: baseline.leewayDays
+        )
+
+        replaceToday(with: updated)
+        lastUpdated = Date()
+        saveSnapshot(forceWidgetReload: false)
+    }
+
+    private func replaceToday(with summary: DayStepSummary) {
+        if let index = days.firstIndex(where: { calendar.isDateInToday($0.date) }) {
+            days[index] = summary
+        } else {
+            days.append(summary)
+            days.sort { $0.date < $1.date }
+        }
+    }
+
+    private func saveSnapshot(forceWidgetReload: Bool) {
+        let now = Date()
+        let shouldReloadWidgets = forceWidgetReload || shouldReloadWidgets(now: now)
+
+        if shouldReloadWidgets {
+            lastWidgetReload = now
+        }
+
+        StepSnapshotCache.save(
+            CachedStepSnapshot(updatedAt: lastUpdated ?? now, today: today, currentStreak: currentStreak),
+            reloadWidgets: shouldReloadWidgets
+        )
+    }
+
+    private func shouldReloadWidgets(now: Date) -> Bool {
+        guard let lastWidgetReload else { return true }
+        return now.timeIntervalSince(lastWidgetReload) >= liveWidgetReloadInterval
     }
 
     private var shouldUseDemoData: Bool {

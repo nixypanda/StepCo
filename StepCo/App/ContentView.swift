@@ -31,7 +31,7 @@ struct ContentView: View {
             }
         }
         .task {
-            await repository.refresh()
+            await repository.startRealtimeUpdates()
         }
     }
 }

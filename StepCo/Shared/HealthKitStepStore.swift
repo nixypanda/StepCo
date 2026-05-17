@@ -19,6 +19,7 @@ final class HealthKitStepStore {
 
     private let store = HKHealthStore()
     private let calendar: Calendar
+    private var observerQueries: [HKObserverQuery] = []
 
     init(calendar: Calendar = .current) {
         self.calendar = calendar
@@ -29,12 +30,38 @@ final class HealthKitStepStore {
             throw HealthError.healthDataUnavailable
         }
 
-        let reads: Set<HKObjectType> = [
-            HKQuantityType(.stepCount),
-            HKQuantityType(.distanceWalkingRunning)
-        ]
+        let reads = Set<HKObjectType>(quantityTypes)
 
         try await store.requestAuthorization(toShare: [], read: reads)
+    }
+
+    func startBackgroundDelivery(onChange: @escaping @MainActor () async -> Void) async throws {
+        guard HKHealthStore.isHealthDataAvailable() else {
+            throw HealthError.healthDataUnavailable
+        }
+
+        for type in quantityTypes {
+            try await enableBackgroundDelivery(for: type)
+        }
+
+        guard observerQueries.isEmpty else { return }
+
+        observerQueries = quantityTypes.map { type in
+            let query = HKObserverQuery(sampleType: type, predicate: nil) { _, completionHandler, error in
+                guard error == nil else {
+                    completionHandler()
+                    return
+                }
+
+                Task {
+                    await onChange()
+                    completionHandler()
+                }
+            }
+
+            store.execute(query)
+            return query
+        }
     }
 
     func summaries(
@@ -102,6 +129,30 @@ final class HealthKitStepStore {
             }
 
             store.execute(query)
+        }
+    }
+
+    private var quantityTypes: [HKQuantityType] {
+        [
+            HKQuantityType(.stepCount),
+            HKQuantityType(.distanceWalkingRunning)
+        ]
+    }
+
+    private func enableBackgroundDelivery(for type: HKQuantityType) async throws {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            store.enableBackgroundDelivery(for: type, frequency: .immediate) { success, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                if success {
+                    continuation.resume()
+                } else {
+                    continuation.resume(throwing: HealthError.authorizationDenied)
+                }
+            }
         }
     }
 }
