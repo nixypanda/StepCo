@@ -2,6 +2,8 @@ import Foundation
 
 enum StepDemoData {
     private static let todaySteps = 5_500
+    private static let minimumHistoricalSteps = 3_000
+    private static let maximumHistoricalSteps = 10_000
 
     static func summaries(
         from startDate: Date,
@@ -11,7 +13,7 @@ enum StepDemoData {
     ) -> [DayStepSummary] {
         days(from: startDate, through: endDate, calendar: calendar).map { date in
             let snapshot = settingsForDate(date)
-            let steps = stepsForDemoDay(date, goal: snapshot.targetSteps, calendar: calendar)
+            let steps = stepsForDemoDay(date, calendar: calendar)
 
             return DayStepSummary(
                 date: date,
@@ -32,14 +34,15 @@ enum StepDemoData {
         return CachedStepSnapshot(updatedAt: Date(), today: today, currentStreak: 0)
     }
 
-    private static func stepsForDemoDay(_ date: Date, goal: Int, calendar: Calendar) -> Int {
+    private static func stepsForDemoDay(_ date: Date, calendar: Calendar) -> Int {
         if calendar.isDateInToday(date) {
             return todaySteps
         }
 
-        let day = calendar.component(.day, from: date)
-        let ratios: [Double] = [0.38, 0.52, 0.74, 0.91, 1.04, 0.67, 1.12]
-        return Int((Double(goal) * ratios[day % ratios.count]).rounded())
+        let day = calendar.ordinality(of: .day, in: .era, for: date) ?? calendar.component(.day, from: date)
+        let range = maximumHistoricalSteps - minimumHistoricalSteps
+        let offset = (day * 1_103 + 7_917) % (range + 1)
+        return minimumHistoricalSteps + offset
     }
 
     private static func distanceKilometers(for steps: Int) -> Double {

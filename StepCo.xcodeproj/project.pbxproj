@@ -37,6 +37,7 @@
 		B701EB9E053D3C5098F4EA24 /* StepColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */; };
 		B9EB3169F6C24DA28C4F5DEF /* StepSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */; };
 		BFA97B08298AC173AB0EFDB0 /* StepCoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE0997F463E188F808D84D /* StepCoWatchApp.swift */; };
+		C3A892AF9CA7206952283EE8 /* StepSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A147981BF8C84BED27C782B /* StepSettingsStoreTests.swift */; };
 		C85077CB54F206E36681854A /* StepDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C2EB6E16A38006C0F0F3 /* StepDemoData.swift */; };
 		D6F0C1E802A77215768E49E4 /* StepSettingsSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E81E80331BD14F6798ACB2 /* StepSettingsSync.swift */; };
 		DE0E1BEB44B4289E2A3DFBF0 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
@@ -128,6 +129,7 @@
 		53E2C907A59A82331ED61E75 /* StepCoWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = StepCoWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC895235FB93D61A5AB1DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A147981BF8C84BED27C782B /* StepSettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSettingsStoreTests.swift; sourceTree = "<group>"; };
 		6C4FC52E406710AC3E8DEE2F /* StepCoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWidget.swift; sourceTree = "<group>"; };
 		966A21D027F2DA27B4E235D2 /* StepCoWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWatchWidget.swift; sourceTree = "<group>"; };
 		966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitStepStore.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		175E146416ABB74C9338620C /* StepCoTests */ = {
 			isa = PBXGroup;
 			children = (
+				6A147981BF8C84BED27C782B /* StepSettingsStoreTests.swift */,
 				AE32449856731B90288F2E00 /* StreakTests.swift */,
 			);
 			path = StepCoTests;
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A892AF9CA7206952283EE8 /* StepSettingsStoreTests.swift in Sources */,
 				9461614F33D4106917191738 /* StreakTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

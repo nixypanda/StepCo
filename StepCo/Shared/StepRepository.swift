@@ -74,7 +74,7 @@ final class StepRepository: ObservableObject {
 
         if shouldUseDemoData {
             let end = Date()
-            let start = calendar.date(byAdding: .month, value: -12, to: end) ?? end
+            let start = calendar.date(byAdding: .month, value: -2, to: end) ?? end
             days = StepDemoData.summaries(from: start, through: end, calendar: calendar) { date in
                 settings.settings(for: date)
             }
