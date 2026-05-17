@@ -63,6 +63,18 @@ final class StepRepository: ObservableObject {
         isLoading = true
         errorMessage = nil
 
+        if shouldUseDemoData {
+            let end = Date()
+            let start = calendar.date(byAdding: .month, value: -12, to: end) ?? end
+            days = StepDemoData.summaries(from: start, through: end, calendar: calendar) { date in
+                settings.settings(for: date)
+            }
+            lastUpdated = Date()
+            StepSnapshotCache.save(CachedStepSnapshot(updatedAt: lastUpdated ?? Date(), today: today, currentStreak: currentStreak))
+            isLoading = false
+            return
+        }
+
         do {
             try await healthStore.requestAuthorization()
             let end = Date()
@@ -75,5 +87,13 @@ final class StepRepository: ObservableObject {
         }
 
         isLoading = false
+    }
+
+    private var shouldUseDemoData: Bool {
+        #if targetEnvironment(simulator)
+        true
+        #else
+        false
+        #endif
     }
 }

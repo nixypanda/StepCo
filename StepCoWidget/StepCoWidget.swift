@@ -22,8 +22,7 @@ struct StepCoWidgetProvider: TimelineProvider {
     }
 
     private var sampleSnapshot: CachedStepSnapshot {
-        let today = DayStepSummary(date: Date(), steps: 7_530, distanceKilometers: 2.6, goal: 7_500, leewayDays: 0)
-        return CachedStepSnapshot(updatedAt: Date(), today: today, currentStreak: 4)
+        StepDemoData.sampleSnapshot()
     }
 }
 

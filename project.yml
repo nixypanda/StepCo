@@ -22,6 +22,7 @@ targets:
       properties:
         CFBundleDisplayName: StepCo
         NSHealthShareUsageDescription: StepCo reads step count and walking distance to show your daily steps.
+        UILaunchScreen: {}
     entitlements:
       path: StepCo/App/StepCo.entitlements
     settings:
@@ -38,6 +39,7 @@ targets:
       - StepCo/Shared/StepModels.swift
       - StepCo/Shared/StepColorStyle.swift
       - StepCo/Shared/StepSnapshotCache.swift
+      - StepCo/Shared/StepDemoData.swift
     info:
       path: StepCoWidget/Info.plist
       properties:
@@ -77,6 +79,7 @@ targets:
       - StepCo/Shared/StepModels.swift
       - StepCo/Shared/StepColorStyle.swift
       - StepCo/Shared/StepSnapshotCache.swift
+      - StepCo/Shared/StepDemoData.swift
     info:
       path: StepCoWatchWidget/Info.plist
       properties:

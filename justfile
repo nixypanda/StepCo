@@ -11,6 +11,7 @@ watch_device := "Apple Watch Series 10 (46mm)"
 ios_sdk := "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 watch_sdk := "/Applications/Xcode.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS.sdk"
 module_cache := "/private/tmp/StepCoModuleCache"
+test_sources := "/private/tmp/StepCoTestSources"
 
 default:
     @nix run nixpkgs#just -- --list
@@ -35,56 +36,43 @@ build-watch:
       SYMROOT="{{build_products}}" \
       OBJROOT="{{build_intermediates}}"
 
-test: test-iphone test-watch
-
-test-iphone:
+test:
     mkdir -p "{{module_cache}}"
+    mkdir -p "{{test_sources}}"
+    find StepCo/Shared StepCo/App -name "*.swift" -print | sort > "{{test_sources}}/iphone-app"
     swiftc -typecheck -parse-as-library \
       -module-cache-path "{{module_cache}}" \
       -target arm64-apple-ios17.0 \
       -sdk "{{ios_sdk}}" \
+      @"{{test_sources}}/iphone-app"
+    find StepCoWidget -name "*.swift" -print | sort > "{{test_sources}}/iphone-widget"
+    printf "%s\n" \
       StepCo/Shared/StepModels.swift \
-      StepCo/Shared/StepSettingsStore.swift \
       StepCo/Shared/StepColorStyle.swift \
-      StepCo/Shared/HealthKitStepStore.swift \
       StepCo/Shared/StepSnapshotCache.swift \
-      StepCo/Shared/StepRepository.swift \
-      StepCo/App/StepCoApp.swift \
-      StepCo/App/ContentView.swift \
-      StepCo/App/DashboardView.swift \
-      StepCo/App/CalendarView.swift \
-      StepCo/App/SettingsView.swift
+      StepCo/Shared/StepDemoData.swift >> "{{test_sources}}/iphone-widget"
     swiftc -typecheck \
       -module-cache-path "{{module_cache}}" \
       -target arm64-apple-ios17.0 \
       -sdk "{{ios_sdk}}" \
-      StepCo/Shared/StepModels.swift \
-      StepCo/Shared/StepColorStyle.swift \
-      StepCo/Shared/StepSnapshotCache.swift \
-      StepCoWidget/StepCoWidget.swift
-
-test-watch:
-    mkdir -p "{{module_cache}}"
+      @"{{test_sources}}/iphone-widget"
+    find StepCo/Shared StepCo/WatchApp -name "*.swift" -print | sort > "{{test_sources}}/watch-app"
     swiftc -typecheck -parse-as-library \
       -module-cache-path "{{module_cache}}" \
       -target arm64-apple-watchos10.0 \
       -sdk "{{watch_sdk}}" \
+      @"{{test_sources}}/watch-app"
+    find StepCoWatchWidget -name "*.swift" -print | sort > "{{test_sources}}/watch-widget"
+    printf "%s\n" \
       StepCo/Shared/StepModels.swift \
-      StepCo/Shared/StepSettingsStore.swift \
       StepCo/Shared/StepColorStyle.swift \
-      StepCo/Shared/HealthKitStepStore.swift \
       StepCo/Shared/StepSnapshotCache.swift \
-      StepCo/Shared/StepRepository.swift \
-      StepCo/WatchApp/StepCoWatchApp.swift \
-      StepCo/WatchApp/WatchDashboardView.swift
+      StepCo/Shared/StepDemoData.swift >> "{{test_sources}}/watch-widget"
     swiftc -typecheck \
       -module-cache-path "{{module_cache}}" \
       -target arm64-apple-watchos10.0 \
       -sdk "{{watch_sdk}}" \
-      StepCo/Shared/StepModels.swift \
-      StepCo/Shared/StepColorStyle.swift \
-      StepCo/Shared/StepSnapshotCache.swift \
-      StepCoWatchWidget/StepCoWatchWidget.swift
+      @"{{test_sources}}/watch-widget"
 
 run-sim: run-sim-iphone
 
