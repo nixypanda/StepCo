@@ -1,6 +1,8 @@
 import Foundation
 
 enum StepDemoData {
+    private static let todaySteps = 5_500
+
     static func summaries(
         from startDate: Date,
         through endDate: Date,
@@ -23,8 +25,8 @@ enum StepDemoData {
     static func sampleSnapshot() -> CachedStepSnapshot {
         let today = DayStepSummary(
             date: Date(),
-            steps: 3_750,
-            distanceKilometers: distanceKilometers(for: 3_750),
+            steps: todaySteps,
+            distanceKilometers: distanceKilometers(for: todaySteps),
             goal: 7_500
         )
         return CachedStepSnapshot(updatedAt: Date(), today: today, currentStreak: 0)
@@ -32,16 +34,12 @@ enum StepDemoData {
 
     private static func stepsForDemoDay(_ date: Date, goal: Int, calendar: Calendar) -> Int {
         if calendar.isDateInToday(date) {
-            return halfSteps(for: goal)
+            return todaySteps
         }
 
         let day = calendar.component(.day, from: date)
         let ratios: [Double] = [0.38, 0.52, 0.74, 0.91, 1.04, 0.67, 1.12]
         return Int((Double(goal) * ratios[day % ratios.count]).rounded())
-    }
-
-    private static func halfSteps(for goal: Int) -> Int {
-        max(0, goal / 2)
     }
 
     private static func distanceKilometers(for steps: Int) -> Double {

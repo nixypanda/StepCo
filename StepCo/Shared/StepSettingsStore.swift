@@ -55,6 +55,14 @@ final class StepSettingsStore: ObservableObject {
         persist()
     }
 
+    func replace(history newHistory: [StepSettingsSnapshot]) {
+        let sortedHistory = newHistory.sorted { $0.effectiveDate < $1.effectiveDate }
+        guard !sortedHistory.isEmpty, sortedHistory != history else { return }
+
+        history = sortedHistory
+        persist()
+    }
+
     private func persist() {
         guard let data = try? JSONEncoder().encode(history) else { return }
         defaults.set(data, forKey: Key.history)

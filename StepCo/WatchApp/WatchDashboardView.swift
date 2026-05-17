@@ -37,6 +37,11 @@ struct WatchDashboardView: View {
         .task {
             await repository.startHealthUpdates()
         }
+        .onChange(of: settings.history) { _, _ in
+            Task {
+                await repository.refresh()
+            }
+        }
     }
 }
 
