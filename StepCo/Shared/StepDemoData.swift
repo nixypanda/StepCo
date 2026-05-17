@@ -2,6 +2,7 @@ import Foundation
 
 enum StepDemoData {
     private static let todaySteps = 5_500
+    private static let highRecentHistoricalSteps = 21_500
     private static let minimumHistoricalSteps = 3_000
     private static let maximumHistoricalSteps = 10_000
 
@@ -37,6 +38,11 @@ enum StepDemoData {
     private static func stepsForDemoDay(_ date: Date, calendar: Calendar) -> Int {
         if calendar.isDateInToday(date) {
             return todaySteps
+        }
+
+        if let yesterday = calendar.date(byAdding: .day, value: -1, to: Date()),
+           calendar.isDate(date, inSameDayAs: yesterday) {
+            return highRecentHistoricalSteps
         }
 
         let day = calendar.ordinality(of: .day, in: .era, for: date) ?? calendar.component(.day, from: date)

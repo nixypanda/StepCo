@@ -54,8 +54,8 @@ private struct MonthSection: View {
             }
 
             LazyVGrid(columns: columns, spacing: 14) {
-                ForEach(weekdaySymbols, id: \.self) { symbol in
-                    Text(symbol)
+                ForEach(weekdaySymbols.indices, id: \.self) { index in
+                    Text(weekdaySymbols[index])
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity)

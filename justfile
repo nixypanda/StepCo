@@ -25,6 +25,7 @@ build-iphone:
     xcodebuild build \
       -project "{{project}}" \
       -scheme "{{iphone_scheme}}" \
+      -configuration Debug \
       -destination "platform=iOS Simulator,name={{iphone_device}}" \
       -derivedDataPath "{{derived_data}}"
 

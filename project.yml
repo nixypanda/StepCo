@@ -24,6 +24,10 @@ targets:
         CFBundleDisplayName: StepCo
         NSHealthShareUsageDescription: StepCo reads step count and walking distance to show your daily steps.
         UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
     entitlements:
       path: StepCo/App/StepCo.entitlements
       properties:

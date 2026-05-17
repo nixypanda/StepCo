@@ -36,7 +36,8 @@ struct StepCoWidgetView: View {
                     .font(.title3)
 
                 Text(summary.steps.stepText)
-                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                    .font(.system(size: 42, weight: .black, design: .rounded))
+                    .fontWeight(.black)
                     .minimumScaleFactor(0.65)
                     .lineLimit(1)
 
