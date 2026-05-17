@@ -36,9 +36,21 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        DEFINES_MODULE: YES
     dependencies:
       - target: StepCoWidget
       - target: StepCoWatch
+  StepCoTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - StepCoTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nixypanda.StepCo.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/StepCo.app/StepCo"
+        BUNDLE_LOADER: "$(TEST_HOST)"
   StepCoWidget:
     type: app-extension
     platform: iOS
@@ -120,6 +132,10 @@ schemes:
         StepCoWatch: all
     run:
       config: Debug
+    test:
+      config: Debug
+      targets:
+        - StepCoTests
   StepCoWatch:
     build:
       targets:

@@ -74,6 +74,13 @@ test:
       -sdk "{{watch_sdk}}" \
       @"{{test_sources}}/watch-widget"
 
+test-unit:
+    xcodebuild test \
+      -project "{{project}}" \
+      -scheme "{{iphone_scheme}}" \
+      -destination "platform=iOS Simulator,name={{iphone_device}}" \
+      -derivedDataPath "{{derived_data}}"
+
 run-sim: run-sim-iphone
 
 run-sim-iphone: build-iphone

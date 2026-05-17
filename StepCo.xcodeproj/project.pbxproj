@@ -24,6 +24,7 @@
 		8A70F97CE78D0C26BA6F6C75 /* StepCoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2E884A714AB8A8C5800E5 /* StepCoApp.swift */; };
 		9005C44E89DF16CE9BBEE547 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73360CF04CAEF201DC9247 /* DashboardView.swift */; };
 		92E73A8493F86A512EB18F2D /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
+		9461614F33D4106917191738 /* StreakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE32449856731B90288F2E00 /* StreakTests.swift */; };
 		965FB4496E6DF8702A6FAF0A /* WatchDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB7C13438FE95D0BE5740F9 /* WatchDashboardView.swift */; };
 		9A184183E8A1C93F6F7B2B05 /* HealthKitStepStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */; };
 		9CE97E614FD3215DE4DDDC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */; };
@@ -112,6 +113,7 @@
 		13F6BD1B26C7808B74CE7A2A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		16C9236006B43229175743C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2E3325B1BAA814456AD426B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		40BD1F8A956635B46BD4EE96 /* StepCoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = StepCoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B5B7C9AF0F0B39C19E58EC /* StepRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRepository.swift; sourceTree = "<group>"; };
 		42E215D85D7506565A40435D /* StepCoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepCoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSettingsStore.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepColorStyle.swift; sourceTree = "<group>"; };
 		A19E7867DD0849A5D5029F71 /* StepCoWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StepCoWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA258630AD50CAEFE77CC028 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AE32449856731B90288F2E00 /* StreakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTests.swift; sourceTree = "<group>"; };
 		B03350C07FA575C7A4EC34AF /* StepCoWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWatchWidget.entitlements; sourceTree = "<group>"; };
 		B4AEDE479715EBFC820EE48E /* StepCoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWidget.entitlements; sourceTree = "<group>"; };
 		BBB2E884A714AB8A8C5800E5 /* StepCoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoApp.swift; sourceTree = "<group>"; };
@@ -156,6 +159,14 @@
 			path = StepCo/Shared;
 			sourceTree = "<group>";
 		};
+		175E146416ABB74C9338620C /* StepCoTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE32449856731B90288F2E00 /* StreakTests.swift */,
+			);
+			path = StepCoTests;
+			sourceTree = "<group>";
+		};
 		47DC01DBF28D42C15C68E9C1 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				BFDC658576A9F1C39730B4F8 /* StepCo.app */,
+				40BD1F8A956635B46BD4EE96 /* StepCoTests.xctest */,
 				42E215D85D7506565A40435D /* StepCoWatch.app */,
 				A19E7867DD0849A5D5029F71 /* StepCoWatchWidget.appex */,
 				53E2C907A59A82331ED61E75 /* StepCoWidget.appex */,
@@ -188,6 +200,7 @@
 			children = (
 				47DC01DBF28D42C15C68E9C1 /* App */,
 				02B5720307EBA9FA7E766826 /* Shared */,
+				175E146416ABB74C9338620C /* StepCoTests */,
 				EDEAD3E6488060F2CC91BE2A /* StepCoWatchWidget */,
 				62832DC585B22716F3666DE6 /* StepCoWidget */,
 				88CBAA2859FCE89D2CBA6CD7 /* WatchApp */,
@@ -305,6 +318,23 @@
 			productReference = BFDC658576A9F1C39730B4F8 /* StepCo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C1C112A7FFF46F566AA42442 /* StepCoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DE52700686681EE3E54D479 /* Build configuration list for PBXNativeTarget "StepCoTests" */;
+			buildPhases = (
+				9DCA49FC77D57725AE6D3995 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StepCoTests;
+			packageProductDependencies = (
+			);
+			productName = StepCoTests;
+			productReference = 40BD1F8A956635B46BD4EE96 /* StepCoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -330,6 +360,10 @@
 						DevelopmentTeam = CR2269QVDK;
 						ProvisioningStyle = Automatic;
 					};
+					C1C112A7FFF46F566AA42442 = {
+						DevelopmentTeam = CR2269QVDK;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 95675C85BA56C70BAB711D9F /* Build configuration list for PBXProject "StepCo" */;
@@ -347,6 +381,7 @@
 			projectRoot = "";
 			targets = (
 				B255970373A0016887FB2D39 /* StepCo */,
+				C1C112A7FFF46F566AA42442 /* StepCoTests */,
 				6BC807C28E565737DB6E2EFC /* StepCoWatch */,
 				9E0CC0BCBC0A5DA379E1FD8E /* StepCoWatchWidget */,
 				36E89647C66154473140AF4C /* StepCoWidget */,
@@ -366,6 +401,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9DCA49FC77D57725AE6D3995 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9461614F33D4106917191738 /* StreakTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9F8D00DB57F135C146547C13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -543,6 +586,23 @@
 			};
 			name = Debug;
 		};
+		6C88D0300EA7568236585FBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StepCo.app/StepCo";
+			};
+			name = Release;
+		};
 		6F731B1EFF8259B5F0C91AD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -553,6 +613,23 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		7E71B782401AEFCE8E98090E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixypanda.StepCo.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StepCo.app/StepCo";
 			};
 			name = Debug;
 		};
@@ -637,6 +714,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StepCo/App/StepCo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = StepCo/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -671,6 +749,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StepCo/App/StepCo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = StepCo/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -725,6 +804,15 @@
 			buildConfigurations = (
 				674FF567C13EE0604D1070F6 /* Debug */,
 				9A24D8BE35FD3EA313801E5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9DE52700686681EE3E54D479 /* Build configuration list for PBXNativeTarget "StepCoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E71B782401AEFCE8E98090E /* Debug */,
+				6C88D0300EA7568236585FBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
