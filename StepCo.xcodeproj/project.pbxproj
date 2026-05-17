@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		014531CDE1B630FF62AE3E87 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
+		02B15BA74F30B227D04E6623 /* StepCoWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 42E215D85D7506565A40435D /* StepCoWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		03F4D5C1E842F1D8B82212A5 /* StepCoWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A21D027F2DA27B4E235D2 /* StepCoWatchWidget.swift */; };
 		04B1CB4403373DB2DC2C5C41 /* HealthKitStepStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */; };
 		0CAE3D00B0DFE623F47F498E /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
@@ -60,9 +61,27 @@
 			remoteGlobalIDString = 9E0CC0BCBC0A5DA379E1FD8E;
 			remoteInfo = StepCoWatchWidget;
 		};
+		A9F4BE0607C5B3F84002032C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52FCE53707EB4366BAEFB31A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BC807C28E565737DB6E2EFC;
+			remoteInfo = StepCoWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		73B8E65AAAECBB325E992253 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				02B15BA74F30B227D04E6623 /* StepCoWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E149DB4B770CA8826E84DCA /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,11 +290,13 @@
 				9F8D00DB57F135C146547C13 /* Sources */,
 				30959DF89C9D2BDDF8905F1D /* Resources */,
 				D9B935AABBBD45FE413CCA57 /* Embed Foundation Extensions */,
+				73B8E65AAAECBB325E992253 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				2871BD3E670FD48CB6BB081D /* PBXTargetDependency */,
+				3EADBA9ECD332BCBFF34E28A /* PBXTargetDependency */,
 			);
 			name = StepCo;
 			packageProductDependencies = (
@@ -413,6 +434,11 @@
 			isa = PBXTargetDependency;
 			target = 36E89647C66154473140AF4C /* StepCoWidget */;
 			targetProxy = 580B67996E8E384733F3704E /* PBXContainerItemProxy */;
+		};
+		3EADBA9ECD332BCBFF34E28A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BC807C28E565737DB6E2EFC /* StepCoWatch */;
+			targetProxy = A9F4BE0607C5B3F84002032C /* PBXContainerItemProxy */;
 		};
 		8A1494380CA6F8DBB39437E6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

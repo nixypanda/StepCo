@@ -88,3 +88,15 @@ run-sim-watch: build-watch
     open -a Simulator
     xcrun simctl install "{{watch_device}}" "{{build_products}}/Debug-watchsimulator/StepCoWatch.app"
     xcrun simctl launch "{{watch_device}}" com.nixypanda.StepCo.watchkitapp
+
+run-sim-paired: build-iphone
+    xcrun simctl pair "{{iphone_device}}" "{{watch_device}}" > /dev/null || true
+    xcrun simctl boot "{{iphone_device}}" || true
+    xcrun simctl boot "{{watch_device}}" || true
+    xcrun simctl bootstatus "{{iphone_device}}" -b
+    xcrun simctl bootstatus "{{watch_device}}" -b
+    open -a Simulator
+    xcrun simctl install "{{iphone_device}}" "{{derived_data}}/Build/Products/Debug-iphonesimulator/StepCo.app"
+    xcrun simctl install "{{watch_device}}" "{{derived_data}}/Build/Products/Debug-watchsimulator/StepCoWatch.app"
+    xcrun simctl launch "{{iphone_device}}" com.nixypanda.StepCo
+    xcrun simctl launch "{{watch_device}}" com.nixypanda.StepCo.watchkitapp

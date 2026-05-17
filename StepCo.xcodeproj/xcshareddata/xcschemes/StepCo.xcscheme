@@ -29,6 +29,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6BC807C28E565737DB6E2EFC"
+               BuildableName = "StepCoWatch.app"
+               BlueprintName = "StepCoWatch"
+               ReferencedContainer = "container:StepCo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "36E89647C66154473140AF4C"
                BuildableName = "StepCoWidget.appex"
                BlueprintName = "StepCoWidget"
