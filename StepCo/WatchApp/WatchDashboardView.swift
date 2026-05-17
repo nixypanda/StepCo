@@ -35,7 +35,7 @@ struct WatchDashboardView: View {
         }
         .ignoresSafeArea()
         .task {
-            await repository.startRealtimeUpdates()
+            await repository.startHealthUpdates()
         }
     }
 }

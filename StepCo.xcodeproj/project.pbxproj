@@ -13,7 +13,6 @@
 		04B1CB4403373DB2DC2C5C41 /* HealthKitStepStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */; };
 		0CAE3D00B0DFE623F47F498E /* StepSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AE1785B04493DAE9002B53 /* StepSnapshotCache.swift */; };
 		12AF8DAF8EDC98CBC62D3D54 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
-		30000B3295FFBFF80DE0351F /* LivePedometerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B751E8F0729244962348A78 /* LivePedometerStore.swift */; };
 		3FF4CE37D1B43B4A5EDA7F0F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA258630AD50CAEFE77CC028 /* ContentView.swift */; };
 		4A0BBDF8B766750A8E399355 /* StepColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */; };
 		4B05BE46451B20326C17FF00 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F6BD1B26C7808B74CE7A2A /* CalendarView.swift */; };
@@ -37,7 +36,6 @@
 		B701EB9E053D3C5098F4EA24 /* StepColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */; };
 		B9EB3169F6C24DA28C4F5DEF /* StepSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */; };
 		BFA97B08298AC173AB0EFDB0 /* StepCoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE0997F463E188F808D84D /* StepCoWatchApp.swift */; };
-		C144E4A888BC9EB0D383FF61 /* LivePedometerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B751E8F0729244962348A78 /* LivePedometerStore.swift */; };
 		C85077CB54F206E36681854A /* StepDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C2EB6E16A38006C0F0F3 /* StepDemoData.swift */; };
 		DE0E1BEB44B4289E2A3DFBF0 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
 		DFA6370D07C29F70DBD69B97 /* StepDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C2EB6E16A38006C0F0F3 /* StepDemoData.swift */; };
@@ -68,6 +66,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6BC807C28E565737DB6E2EFC;
 			remoteInfo = StepCoWatch;
+		};
+		F9A50C3935953E2CA6060B7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52FCE53707EB4366BAEFB31A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B255970373A0016887FB2D39;
+			remoteInfo = StepCo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -121,7 +126,6 @@
 		5BC895235FB93D61A5AB1DF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C4FC52E406710AC3E8DEE2F /* StepCoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWidget.swift; sourceTree = "<group>"; };
-		7B751E8F0729244962348A78 /* LivePedometerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePedometerStore.swift; sourceTree = "<group>"; };
 		966A21D027F2DA27B4E235D2 /* StepCoWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWatchWidget.swift; sourceTree = "<group>"; };
 		966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitStepStore.swift; sourceTree = "<group>"; };
 		9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepColorStyle.swift; sourceTree = "<group>"; };
@@ -147,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */,
-				7B751E8F0729244962348A78 /* LivePedometerStore.swift */,
 				9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */,
 				FD83C2EB6E16A38006C0F0F3 /* StepDemoData.swift */,
 				CEE606FD9D6C311508C7D5C9 /* StepModels.swift */,
@@ -327,6 +330,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				23BDA5D2BDB9A24C960A6623 /* PBXTargetDependency */,
 			);
 			name = StepCoTests;
 			packageProductDependencies = (
@@ -417,7 +421,6 @@
 				3FF4CE37D1B43B4A5EDA7F0F /* ContentView.swift in Sources */,
 				9005C44E89DF16CE9BBEE547 /* DashboardView.swift in Sources */,
 				9A184183E8A1C93F6F7B2B05 /* HealthKitStepStore.swift in Sources */,
-				C144E4A888BC9EB0D383FF61 /* LivePedometerStore.swift in Sources */,
 				A17CEE3869C992E0E42E182F /* SettingsView.swift in Sources */,
 				8A70F97CE78D0C26BA6F6C75 /* StepCoApp.swift in Sources */,
 				A3D69ECB8F2FF3E49F3A5194 /* StepColorStyle.swift in Sources */,
@@ -458,7 +461,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B1CB4403373DB2DC2C5C41 /* HealthKitStepStore.swift in Sources */,
-				30000B3295FFBFF80DE0351F /* LivePedometerStore.swift in Sources */,
 				BFA97B08298AC173AB0EFDB0 /* StepCoWatchApp.swift in Sources */,
 				B701EB9E053D3C5098F4EA24 /* StepColorStyle.swift in Sources */,
 				A3CCE5706AB4FA470F5310E1 /* StepDemoData.swift in Sources */,
@@ -473,6 +475,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		23BDA5D2BDB9A24C960A6623 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B255970373A0016887FB2D39 /* StepCo */;
+			targetProxy = F9A50C3935953E2CA6060B7A /* PBXContainerItemProxy */;
+		};
 		2871BD3E670FD48CB6BB081D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 36E89647C66154473140AF4C /* StepCoWidget */;

@@ -31,7 +31,7 @@ struct ContentView: View {
             }
         }
         .task {
-            await repository.startRealtimeUpdates()
+            await repository.startHealthUpdates()
         }
     }
 }

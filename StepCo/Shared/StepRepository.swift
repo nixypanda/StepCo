@@ -4,7 +4,6 @@ import Combine
 @MainActor
 final class StepRepository: ObservableObject {
     private let healthStore: HealthKitStepStore
-    private let liveStore: LivePedometerStore
     private let settings: StepSettingsStore
     private let calendar: Calendar
     private let liveWidgetReloadInterval: TimeInterval = 60
@@ -14,18 +13,14 @@ final class StepRepository: ObservableObject {
     @Published var errorMessage: String?
     @Published var lastUpdated: Date?
 
-    private var liveUpdatesEnabled = false
-    private var liveBaseline: DayStepSummary?
     private var lastWidgetReload: Date?
 
     init(
         healthStore: HealthKitStepStore? = nil,
-        liveStore: LivePedometerStore? = nil,
         settings: StepSettingsStore,
         calendar: Calendar = .current
     ) {
         self.healthStore = healthStore ?? HealthKitStepStore()
-        self.liveStore = liveStore ?? LivePedometerStore()
         self.settings = settings
         self.calendar = calendar
     }
@@ -56,25 +51,24 @@ final class StepRepository: ObservableObject {
     }
 
     func refresh() async {
-        await refresh(restartLiveUpdates: liveUpdatesEnabled, forceWidgetReload: true)
+        await refresh(forceWidgetReload: true)
     }
 
-    func startRealtimeUpdates() async {
-        liveUpdatesEnabled = true
-        await refresh(restartLiveUpdates: true, forceWidgetReload: true)
+    func startHealthUpdates() async {
+        await refresh(forceWidgetReload: true)
 
         guard !shouldUseDemoData else { return }
 
         do {
             try await healthStore.startBackgroundDelivery { [weak self] in
-                await self?.refresh(restartLiveUpdates: true, forceWidgetReload: true)
+                await self?.refresh(forceWidgetReload: true)
             }
         } catch {
             errorMessage = error.localizedDescription
         }
     }
 
-    private func refresh(restartLiveUpdates: Bool, forceWidgetReload: Bool) async {
+    private func refresh(forceWidgetReload: Bool) async {
         isLoading = true
         errorMessage = nil
 
@@ -97,56 +91,11 @@ final class StepRepository: ObservableObject {
             days = try await healthStore.summaries(from: start, through: end, settings: settings)
             lastUpdated = Date()
             saveSnapshot(forceWidgetReload: forceWidgetReload)
-
-            if restartLiveUpdates {
-                startForegroundLiveUpdates()
-            }
         } catch {
             errorMessage = error.localizedDescription
         }
 
         isLoading = false
-    }
-
-    private func startForegroundLiveUpdates() {
-        liveBaseline = today
-
-        liveStore.start(from: Date()) { [weak self] update in
-            self?.applyLiveUpdate(update)
-        } onError: { [weak self] message in
-            self?.errorMessage = message
-        }
-    }
-
-    private func applyLiveUpdate(_ update: LivePedometerUpdate) {
-        guard let baseline = liveBaseline else { return }
-
-        if !calendar.isDateInToday(baseline.date) {
-            Task {
-                await refresh(restartLiveUpdates: true, forceWidgetReload: true)
-            }
-            return
-        }
-
-        let updated = DayStepSummary(
-            date: baseline.date,
-            steps: baseline.steps + update.steps,
-            distanceKilometers: baseline.distanceKilometers + update.distanceKilometers,
-            goal: baseline.goal
-        )
-
-        replaceToday(with: updated)
-        lastUpdated = Date()
-        saveSnapshot(forceWidgetReload: false)
-    }
-
-    private func replaceToday(with summary: DayStepSummary) {
-        if let index = days.firstIndex(where: { calendar.isDateInToday($0.date) }) {
-            days[index] = summary
-        } else {
-            days.append(summary)
-            days.sort { $0.date < $1.date }
-        }
     }
 
     private func saveSnapshot(forceWidgetReload: Bool) {
