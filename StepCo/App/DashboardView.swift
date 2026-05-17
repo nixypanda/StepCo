@@ -8,11 +8,6 @@ struct DashboardView: View {
             VStack(alignment: .leading, spacing: 28) {
                 TodaySummaryCard(summary: repository.today, lastUpdated: repository.lastUpdated)
 
-                LabeledContent("Current streak") {
-                    Text("\(repository.currentStreak) days")
-                        .foregroundStyle(.secondary)
-                }
-
                 if let errorMessage = repository.errorMessage {
                     ContentUnavailableView("Health data unavailable", systemImage: "heart.text.square", description: Text(errorMessage))
                 }

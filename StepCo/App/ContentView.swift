@@ -16,7 +16,7 @@ struct ContentView: View {
                     Label("Today", systemImage: "figure.walk")
                 }
 
-            CalendarView(days: repository.days)
+            CalendarView(days: repository.days, currentStreak: repository.currentStreak)
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")
                 }

@@ -2,12 +2,18 @@ import SwiftUI
 
 struct CalendarView: View {
     let days: [DayStepSummary]
+    let currentStreak: Int
     private let calendar = Calendar.current
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 28) {
+                    LabeledContent("Current streak") {
+                        Text("\(currentStreak) days")
+                            .foregroundStyle(.secondary)
+                    }
+
                     ForEach(months, id: \.month) { month in
                         MonthSection(month: month.month, days: month.days)
                     }
