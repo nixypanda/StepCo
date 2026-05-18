@@ -82,6 +82,8 @@ private struct MonthSection: View {
                 }
             }
         }
+        .padding()
+        .background(monthlyLevel.color.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
     }
 
     private var leadingBlankCount: Int {
@@ -94,5 +96,27 @@ private struct MonthSection: View {
         let symbols = calendar.veryShortStandaloneWeekdaySymbols
         let start = calendar.firstWeekday - 1
         return Array(symbols[start...] + symbols[..<start])
+    }
+
+    private var monthlySteps: Int {
+        days.reduce(0) { $0 + $1.steps }
+    }
+
+    private var monthlyGoal: Int {
+        days.reduce(0) { $0 + $1.goal }
+    }
+
+    private var monthlyLevel: StepGoalLevel {
+        guard monthlyGoal > 0 else { return .low }
+
+        if monthlySteps >= monthlyGoal {
+            return .met
+        }
+
+        if monthlySteps >= monthlyGoal / 2 {
+            return .warning
+        }
+
+        return .low
     }
 }
