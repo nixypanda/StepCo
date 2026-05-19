@@ -3,6 +3,7 @@ import SwiftUI
 struct CalendarView: View {
     let days: [DayStepSummary]
     let currentStreak: Int
+    let loadMoreHistory: () async -> Void
     private let calendar = Calendar.current
 
     var body: some View {
@@ -16,6 +17,10 @@ struct CalendarView: View {
 
                     ForEach(months, id: \.month) { month in
                         MonthSection(month: month.month, days: month.days)
+                            .task(id: month.month) {
+                                guard month.month == months.last?.month else { return }
+                                await loadMoreHistory()
+                            }
                     }
                 }
                 .padding()
