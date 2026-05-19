@@ -122,6 +122,6 @@ Widget reloads are throttled during live updates with a 60-second interval unles
 - watch app
 - watch widget
 
-`just test-unit` runs the `StepCoTests` XCTest bundle through `xcodebuild test` on the `StepCo` scheme. Current XCTest coverage is focused on streak behavior.
+`just test-unit` runs the `StepCoTests` XCTest bundle through `xcodebuild test` on the `StepCo` scheme.
 
 App group and HealthKit capabilities are declared in entitlements, but a real device/App Store build will still need the proper Apple developer team/capability setup.

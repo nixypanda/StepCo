@@ -25,7 +25,6 @@
 		8ED39CF6D7049070100801F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0FBAFD997B6EAC8D823CEED /* Assets.xcassets */; };
 		9005C44E89DF16CE9BBEE547 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73360CF04CAEF201DC9247 /* DashboardView.swift */; };
 		92E73A8493F86A512EB18F2D /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
-		9461614F33D4106917191738 /* StreakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE32449856731B90288F2E00 /* StreakTests.swift */; };
 		965FB4496E6DF8702A6FAF0A /* WatchDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB7C13438FE95D0BE5740F9 /* WatchDashboardView.swift */; };
 		9A184183E8A1C93F6F7B2B05 /* HealthKitStepStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */; };
 		9CE97E614FD3215DE4DDDC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */; };
@@ -137,7 +136,6 @@
 		9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepColorStyle.swift; sourceTree = "<group>"; };
 		A19E7867DD0849A5D5029F71 /* StepCoWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StepCoWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA258630AD50CAEFE77CC028 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AE32449856731B90288F2E00 /* StreakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTests.swift; sourceTree = "<group>"; };
 		B03350C07FA575C7A4EC34AF /* StepCoWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWatchWidget.entitlements; sourceTree = "<group>"; };
 		B4AEDE479715EBFC820EE48E /* StepCoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StepCoWidget.entitlements; sourceTree = "<group>"; };
 		BBB2E884A714AB8A8C5800E5 /* StepCoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoApp.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				6A147981BF8C84BED27C782B /* StepSettingsStoreTests.swift */,
-				AE32449856731B90288F2E00 /* StreakTests.swift */,
 			);
 			path = StepCoTests;
 			sourceTree = "<group>";
@@ -429,7 +426,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3A892AF9CA7206952283EE8 /* StepSettingsStoreTests.swift in Sources */,
-				9461614F33D4106917191738 /* StreakTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,7 +32,7 @@ enum StepDemoData {
             distanceKilometers: distanceKilometers(for: todaySteps),
             goal: 7_500
         )
-        return CachedStepSnapshot(updatedAt: Date(), today: today, currentStreak: 0)
+        return CachedStepSnapshot(updatedAt: Date(), today: today)
     }
 
     private static func stepsForDemoDay(_ date: Date, calendar: Calendar) -> Int {

@@ -42,17 +42,6 @@ final class StepRepository: ObservableObject {
         )
     }
 
-    var currentStreak: Int {
-        var streak = 0
-
-        for day in days.sorted(by: { $0.date > $1.date }) {
-            guard day.steps >= day.goal else { break }
-            streak += 1
-        }
-
-        return streak
-    }
-
     func refresh() async {
         await refresh(forceWidgetReload: true)
     }
@@ -149,7 +138,7 @@ final class StepRepository: ObservableObject {
         }
 
         StepSnapshotCache.save(
-            CachedStepSnapshot(updatedAt: lastUpdated ?? now, today: today, currentStreak: currentStreak),
+            CachedStepSnapshot(updatedAt: lastUpdated ?? now, today: today),
             reloadWidgets: shouldReloadWidgets
         )
     }

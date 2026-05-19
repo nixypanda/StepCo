@@ -62,7 +62,6 @@ struct StepSettingsSnapshot: Codable, Equatable {
 struct CachedStepSnapshot: Codable, Equatable {
     let updatedAt: Date
     let today: DayStepSummary
-    let currentStreak: Int
 }
 
 enum StepFormatters {
