@@ -41,6 +41,7 @@
 		C85077CB54F206E36681854A /* StepDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C2EB6E16A38006C0F0F3 /* StepDemoData.swift */; };
 		D6F0C1E802A77215768E49E4 /* StepSettingsSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E81E80331BD14F6798ACB2 /* StepSettingsSync.swift */; };
 		DE0E1BEB44B4289E2A3DFBF0 /* StepModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE606FD9D6C311508C7D5C9 /* StepModels.swift */; };
+		DF5D79A76F9024BBD3F4BF8E /* StepSummaryModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89290F15C53B5C13E9A656AB /* StepSummaryModelsTests.swift */; };
 		DFA6370D07C29F70DBD69B97 /* StepDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C2EB6E16A38006C0F0F3 /* StepDemoData.swift */; };
 		E5B87EAFE45378E865093586 /* StepCoWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 53E2C907A59A82331ED61E75 /* StepCoWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F03D19C865BEF342DB0251E4 /* StepSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0B04F457DA48670E5B31E /* StepSettingsStore.swift */; };
@@ -131,6 +132,7 @@
 		682D8FCC2A5ED44EA77C5AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A147981BF8C84BED27C782B /* StepSettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSettingsStoreTests.swift; sourceTree = "<group>"; };
 		6C4FC52E406710AC3E8DEE2F /* StepCoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWidget.swift; sourceTree = "<group>"; };
+		89290F15C53B5C13E9A656AB /* StepSummaryModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSummaryModelsTests.swift; sourceTree = "<group>"; };
 		966A21D027F2DA27B4E235D2 /* StepCoWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCoWatchWidget.swift; sourceTree = "<group>"; };
 		966BE49C60BA2E2968DA955B /* HealthKitStepStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitStepStore.swift; sourceTree = "<group>"; };
 		9CF6194A8D0AA6AE56EDB939 /* StepColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepColorStyle.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				6A147981BF8C84BED27C782B /* StepSettingsStoreTests.swift */,
+				89290F15C53B5C13E9A656AB /* StepSummaryModelsTests.swift */,
 			);
 			path = StepCoTests;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3A892AF9CA7206952283EE8 /* StepSettingsStoreTests.swift in Sources */,
+				DF5D79A76F9024BBD3F4BF8E /* StepSummaryModelsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

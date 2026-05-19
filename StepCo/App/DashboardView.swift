@@ -8,8 +8,8 @@ struct DashboardView: View {
       VStack(alignment: .leading, spacing: 28) {
         TodaySummaryCard(summary: repository.today, lastUpdated: repository.lastUpdated)
 
-        if !recentDays.isEmpty {
-          RecentDaysSection(days: recentDays)
+        if !recentDays.days.isEmpty {
+          RecentDaysSection(summary: recentDays)
         }
 
         if let errorMessage = repository.errorMessage {
@@ -36,8 +36,8 @@ struct DashboardView: View {
     }
   }
 
-  private var recentDays: [DayStepSummary] {
-    Array(repository.days.sorted { $0.date < $1.date }.suffix(7))
+  private var recentDays: RecentDaysSummary {
+    RecentDaysSummary(days: repository.days)
   }
 }
 
@@ -80,7 +80,7 @@ private struct TodaySummaryCard: View {
 }
 
 private struct RecentDaysSection: View {
-  let days: [DayStepSummary]
+  let summary: RecentDaysSummary
 
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
@@ -89,53 +89,22 @@ private struct RecentDaysSection: View {
 
       HStack(alignment: .bottom, spacing: 16) {
         HStack(alignment: .bottom, spacing: 8) {
-          ForEach(days) { day in
-            RecentDayItem(day: day, maximumSteps: maximumSteps)
+          ForEach(summary.days) { day in
+            RecentDayItem(day: day, maximumSteps: summary.maximumSteps)
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
 
         WeeklyTargetSummary(
-          target: weeklyGoal,
-          percent: weeklyPercent,
-          level: weeklyLevel
+          target: summary.totalGoal,
+          percent: summary.percent,
+          level: summary.level
         )
       }
     }
     .padding()
-    .background(weeklyLevel.color.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
+    .background(summary.level.color.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-  }
-
-  private var maximumSteps: Int {
-    days.map(\.steps).max() ?? 0
-  }
-
-  private var weeklySteps: Int {
-    days.reduce(0) { $0 + $1.steps }
-  }
-
-  private var weeklyGoal: Int {
-    days.reduce(0) { $0 + $1.goal }
-  }
-
-  private var weeklyPercent: Int {
-    guard weeklyGoal > 0 else { return 0 }
-    return Int((Double(weeklySteps) / Double(weeklyGoal) * 100).rounded())
-  }
-
-  private var weeklyLevel: StepGoalLevel {
-    guard weeklyGoal > 0 else { return .low }
-
-    if weeklySteps >= weeklyGoal {
-      return .met
-    }
-
-    if weeklySteps >= weeklyGoal / 2 {
-      return .warning
-    }
-
-    return .low
   }
 }
 

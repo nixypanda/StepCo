@@ -10,7 +10,7 @@ struct CalendarView: View {
       ScrollView {
         LazyVStack(alignment: .leading, spacing: 28) {
           ForEach(months, id: \.month) { month in
-            MonthSection(month: month.month, days: month.days)
+            MonthSection(summary: month)
               .task(id: month.month) {
                 guard month.month == months.last?.month else { return }
                 await loadMoreHistory()
@@ -23,50 +23,40 @@ struct CalendarView: View {
     }
   }
 
-  private var months: [(month: Date, days: [DayStepSummary])] {
-    let grouped = Dictionary(grouping: days) { day in
-      let components = calendar.dateComponents([.year, .month], from: day.date)
-      return calendar.date(from: components) ?? day.date
-    }
-
-    return
-      grouped
-      .map { ($0.key, $0.value.sorted { $0.date < $1.date }) }
-      .sorted { $0.month > $1.month }
+  private var months: [MonthlyStepSummary] {
+    MonthlyStepSummary.summaries(from: days, calendar: calendar)
   }
 }
 
 private struct MonthSection: View {
-  let month: Date
-  let days: [DayStepSummary]
+  let summary: MonthlyStepSummary
 
-  private let calendar = Calendar.current
   private let columns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 7)
 
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       HStack {
-        Text(StepFormatters.monthTitle.string(from: month))
+        Text(StepFormatters.monthTitle.string(from: summary.month))
           .font(.headline)
         Spacer()
-        Text("\(days.reduce(0) { $0 + $1.steps }.stepText) steps")
+        Text("\(summary.totalSteps.stepText) steps")
           .foregroundStyle(.secondary)
       }
 
       LazyVGrid(columns: columns, spacing: 14) {
-        ForEach(weekdaySymbols.indices, id: \.self) { index in
-          Text(weekdaySymbols[index])
+        ForEach(summary.weekdaySymbols.indices, id: \.self) { index in
+          Text(summary.weekdaySymbols[index])
             .font(.caption)
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity)
         }
 
-        ForEach(0..<leadingBlankCount, id: \.self) { _ in
+        ForEach(0..<summary.leadingBlankCount, id: \.self) { _ in
           Color.clear
             .frame(height: 42)
         }
 
-        ForEach(days) { day in
+        ForEach(summary.days) { day in
           VStack(spacing: 2) {
             Text(day.shortStepsText)
               .font(.callout.weight(.semibold))
@@ -83,40 +73,6 @@ private struct MonthSection: View {
       }
     }
     .padding()
-    .background(monthlyLevel.color.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
-  }
-
-  private var leadingBlankCount: Int {
-    guard let first = days.first else { return 0 }
-    let weekday = calendar.component(.weekday, from: first.date)
-    return (weekday - calendar.firstWeekday + 7) % 7
-  }
-
-  private var weekdaySymbols: [String] {
-    let symbols = calendar.veryShortStandaloneWeekdaySymbols
-    let start = calendar.firstWeekday - 1
-    return Array(symbols[start...] + symbols[..<start])
-  }
-
-  private var monthlySteps: Int {
-    days.reduce(0) { $0 + $1.steps }
-  }
-
-  private var monthlyGoal: Int {
-    days.reduce(0) { $0 + $1.goal }
-  }
-
-  private var monthlyLevel: StepGoalLevel {
-    guard monthlyGoal > 0 else { return .low }
-
-    if monthlySteps >= monthlyGoal {
-      return .met
-    }
-
-    if monthlySteps >= monthlyGoal / 2 {
-      return .warning
-    }
-
-    return .low
+    .background(summary.level.color.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
   }
 }
