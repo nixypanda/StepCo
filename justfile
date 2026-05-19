@@ -97,6 +97,20 @@ run-sim-watch: build-watch
     xcrun simctl install "{{watch_device}}" "{{build_products}}/Debug-watchsimulator/StepCoWatch.app"
     xcrun simctl launch "{{watch_device}}" com.nixypanda.StepCo.watchkitapp
 
+format:
+    nix run nixpkgs#swift-format -- \
+      --configuration .swift-format.json \
+      --in-place \
+      --recursive \
+      .
+
+lint:
+    nix run nixpkgs#swift-format -- \
+      --configuration .swift-format.json \
+      --recursive \
+      --strict \
+      .
+
 run-sim-paired: build-iphone
     xcrun simctl pair "{{iphone_device}}" "{{watch_device}}" > /dev/null || true
     xcrun simctl boot "{{iphone_device}}" || true
