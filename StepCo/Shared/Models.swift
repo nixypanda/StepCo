@@ -134,6 +134,18 @@ struct CachedStepSnapshot: Codable, Equatable {
   let today: DayStepSummary
 }
 
+struct StepTint {
+  let level: StepGoalLevel
+
+  var color: Color {
+    level.color
+  }
+
+  var softBackground: Color {
+    color.opacity(0.14)
+  }
+}
+
 enum StepFormatters {
   static let monthTitle: DateFormatter = {
     let formatter = DateFormatter()
@@ -158,6 +170,12 @@ enum StepFormatters {
     formatter.numberStyle = .decimal
     return formatter
   }()
+}
+
+extension View {
+  func stepTint(_ level: StepGoalLevel) -> some View {
+    tint(StepTint(level: level).color)
+  }
 }
 
 extension Int {

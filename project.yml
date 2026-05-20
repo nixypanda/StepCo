@@ -61,10 +61,10 @@ targets:
     platform: iOS
     sources:
       - StepCoWidget
-      - StepCo/Shared/StepModels.swift
-      - StepCo/Shared/StepColorStyle.swift
-      - StepCo/Shared/StepSnapshotCache.swift
-      - StepCo/Shared/StepDemoData.swift
+      - StepCo/Shared/Models.swift
+      - StepCo/Shared/Settings.swift
+      - StepCo/Shared/StepData.swift
+      - StepCo/Shared/Cache.swift
     info:
       path: StepCoWidget/Info.plist
       properties:
@@ -112,10 +112,10 @@ targets:
     platform: watchOS
     sources:
       - StepCoWatchWidget
-      - StepCo/Shared/StepModels.swift
-      - StepCo/Shared/StepColorStyle.swift
-      - StepCo/Shared/StepSnapshotCache.swift
-      - StepCo/Shared/StepDemoData.swift
+      - StepCo/Shared/Models.swift
+      - StepCo/Shared/Settings.swift
+      - StepCo/Shared/StepData.swift
+      - StepCo/Shared/Cache.swift
     info:
       path: StepCoWatchWidget/Info.plist
       properties:

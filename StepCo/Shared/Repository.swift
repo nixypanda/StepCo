@@ -3,10 +3,12 @@ import Foundation
 
 @MainActor
 final class StepRepository: ObservableObject {
-  private let healthStore: HealthKitStepStore
-  private let settings: StepSettingsStore
+  private let dataService: StepDataService
+  private let settings: StepSettingsProviding
+  private let snapshotCache: StepSnapshotCaching
   private let calendar: Calendar
-  private let liveWidgetReloadInterval: TimeInterval = 60
+  private let now: () -> Date
+  private let liveWidgetReloadInterval: TimeInterval
   private let historyPageMonthCount = 12
 
   @Published var days: [DayStepSummary] = []
@@ -19,23 +21,50 @@ final class StepRepository: ObservableObject {
   private var historyStartDate: Date?
 
   init(
-    healthStore: HealthKitStepStore? = nil,
-    settings: StepSettingsStore,
-    calendar: Calendar = .current
+    dataService: StepDataService,
+    settings: StepSettingsProviding,
+    snapshotCache: StepSnapshotCaching = StepSnapshotCache.live,
+    calendar: Calendar = .current,
+    now: @escaping () -> Date = Date.init,
+    liveWidgetReloadInterval: TimeInterval = 60
   ) {
-    self.healthStore = healthStore ?? HealthKitStepStore()
+    self.dataService = dataService
     self.settings = settings
+    self.snapshotCache = snapshotCache
     self.calendar = calendar
+    self.now = now
+    self.liveWidgetReloadInterval = liveWidgetReloadInterval
+  }
+
+  static func production(
+    settings: StepSettingsProviding,
+    snapshotCache: StepSnapshotCaching = StepSnapshotCache.live,
+    calendar: Calendar = .current,
+    now: @escaping () -> Date = Date.init
+  ) -> StepRepository {
+    #if targetEnvironment(simulator)
+      let dataService: StepDataService = DemoStepDataService(calendar: calendar)
+    #else
+      let dataService: StepDataService = HealthKitStepStore(calendar: calendar)
+    #endif
+
+    return StepRepository(
+      dataService: dataService,
+      settings: settings,
+      snapshotCache: snapshotCache,
+      calendar: calendar,
+      now: now
+    )
   }
 
   var today: DayStepSummary {
-    if let today = days.last(where: { calendar.isDateInToday($0.date) }) {
+    if let today = days.last(where: { calendar.isDate($0.date, inSameDayAs: now()) }) {
       return today
     }
 
     let snapshot = settings.current
     return DayStepSummary(
-      date: Date(),
+      date: now(),
       steps: 0,
       distanceKilometers: 0,
       goal: snapshot.targetSteps
@@ -49,11 +78,9 @@ final class StepRepository: ObservableObject {
   func startHealthUpdates() async {
     await refresh(forceWidgetReload: true)
 
-    guard !shouldUseDemoData else { return }
-
     do {
-      try await healthStore.startBackgroundDelivery { [weak self] in
-        await self?.refresh(forceWidgetReload: true)
+      try await dataService.startBackgroundDelivery { [weak self] in
+        await self?.refresh(forceWidgetReload: false)
       }
     } catch {
       errorMessage = error.localizedDescription
@@ -79,20 +106,17 @@ final class StepRepository: ObservableObject {
     errorMessage = nil
 
     do {
-      let olderDays: [DayStepSummary]
-
-      if shouldUseDemoData {
-        olderDays = StepDemoData.summaries(from: start, through: end, calendar: calendar) { date in
-          settings.settings(for: date)
-        }
-      } else {
-        try await healthStore.requestAuthorization()
-        olderDays = try await healthStore.summaries(from: start, through: end, settings: settings)
+      try await dataService.requestAuthorization()
+      let olderDays = try await dataService.summaries(
+        from: start,
+        through: end
+      ) { [settings] date in
+        settings.settings(for: date)
       }
 
       days = merged(days + olderDays)
       self.historyStartDate = startOfMonth(for: start)
-      lastUpdated = Date()
+      lastUpdated = now()
     } catch {
       errorMessage = error.localizedDescription
     }
@@ -104,25 +128,19 @@ final class StepRepository: ObservableObject {
     isLoading = true
     errorMessage = nil
 
-    let end = Date()
+    let end = now()
     let start = historyStartDate ?? initialHistoryStartDate(endingAt: end)
 
-    if shouldUseDemoData {
-      days = StepDemoData.summaries(from: start, through: end, calendar: calendar) { date in
+    do {
+      try await dataService.requestAuthorization()
+      days = try await dataService.summaries(
+        from: start,
+        through: end
+      ) { [settings] date in
         settings.settings(for: date)
       }
       historyStartDate = start
-      lastUpdated = Date()
-      saveSnapshot(forceWidgetReload: forceWidgetReload)
-      isLoading = false
-      return
-    }
-
-    do {
-      try await healthStore.requestAuthorization()
-      days = try await healthStore.summaries(from: start, through: end, settings: settings)
-      historyStartDate = start
-      lastUpdated = Date()
+      lastUpdated = now()
       saveSnapshot(forceWidgetReload: forceWidgetReload)
     } catch {
       errorMessage = error.localizedDescription
@@ -132,15 +150,15 @@ final class StepRepository: ObservableObject {
   }
 
   private func saveSnapshot(forceWidgetReload: Bool) {
-    let now = Date()
-    let shouldReloadWidgets = forceWidgetReload || shouldReloadWidgets(now: now)
+    let currentDate = now()
+    let shouldReloadWidgets = forceWidgetReload || shouldReloadWidgets(now: currentDate)
 
     if shouldReloadWidgets {
-      lastWidgetReload = now
+      lastWidgetReload = currentDate
     }
 
-    StepSnapshotCache.save(
-      CachedStepSnapshot(updatedAt: lastUpdated ?? now, today: today),
+    snapshotCache.save(
+      CachedStepSnapshot(updatedAt: lastUpdated ?? currentDate, today: today),
       reloadWidgets: shouldReloadWidgets
     )
   }
@@ -167,13 +185,5 @@ final class StepRepository: ObservableObject {
     }
 
     return byDay.values.sorted { $0.date < $1.date }
-  }
-
-  private var shouldUseDemoData: Bool {
-    #if targetEnvironment(simulator)
-      true
-    #else
-      false
-    #endif
   }
 }

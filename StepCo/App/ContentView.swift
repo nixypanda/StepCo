@@ -4,9 +4,10 @@ struct ContentView: View {
   @ObservedObject var settings: StepSettingsStore
   @StateObject private var repository: StepRepository
 
-  init(settings: StepSettingsStore) {
+  init(settings: StepSettingsStore, repository: StepRepository? = nil) {
     self.settings = settings
-    _repository = StateObject(wrappedValue: StepRepository(settings: settings))
+    _repository = StateObject(
+      wrappedValue: repository ?? StepRepository.production(settings: settings))
   }
 
   var body: some View {

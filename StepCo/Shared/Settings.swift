@@ -1,7 +1,12 @@
 import Combine
 import Foundation
 
-final class StepSettingsStore: ObservableObject {
+protocol StepSettingsProviding {
+  var current: StepSettingsSnapshot { get }
+  func settings(for date: Date) -> StepSettingsSnapshot
+}
+
+final class StepSettingsStore: ObservableObject, StepSettingsProviding {
   private enum Key {
     static let history = "settingsHistory"
   }

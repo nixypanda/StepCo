@@ -48,10 +48,10 @@ test:
       @"{{test_sources}}/iphone-app"
     find StepCoWidget -name "*.swift" -print | sort > "{{test_sources}}/iphone-widget"
     printf "%s\n" \
-      StepCo/Shared/StepModels.swift \
-      StepCo/Shared/StepColorStyle.swift \
-      StepCo/Shared/StepSnapshotCache.swift \
-      StepCo/Shared/StepDemoData.swift >> "{{test_sources}}/iphone-widget"
+      StepCo/Shared/Models.swift \
+      StepCo/Shared/Settings.swift \
+      StepCo/Shared/StepData.swift \
+      StepCo/Shared/Cache.swift >> "{{test_sources}}/iphone-widget"
     swiftc -typecheck \
       -module-cache-path "{{module_cache}}" \
       -target arm64-apple-ios17.0 \
@@ -65,10 +65,10 @@ test:
       @"{{test_sources}}/watch-app"
     find StepCoWatchWidget -name "*.swift" -print | sort > "{{test_sources}}/watch-widget"
     printf "%s\n" \
-      StepCo/Shared/StepModels.swift \
-      StepCo/Shared/StepColorStyle.swift \
-      StepCo/Shared/StepSnapshotCache.swift \
-      StepCo/Shared/StepDemoData.swift >> "{{test_sources}}/watch-widget"
+      StepCo/Shared/Models.swift \
+      StepCo/Shared/Settings.swift \
+      StepCo/Shared/StepData.swift \
+      StepCo/Shared/Cache.swift >> "{{test_sources}}/watch-widget"
     swiftc -typecheck \
       -module-cache-path "{{module_cache}}" \
       -target arm64-apple-watchos10.0 \
